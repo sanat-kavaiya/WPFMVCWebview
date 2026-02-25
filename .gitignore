@@ -1,0 +1,118 @@
+## .NET Core / ASP.NET MVC
+## ========================
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+**/bin/**
+**/obj/**
+
+# Visual Studio files
+.vs/
+**/.vs/**
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.userprefs
+*.pidb
+*.proj.user
+*.proj.user
+*.vcxproj.user
+*.vcxproj.filters
+
+## WPF Specific
+## ============
+# WPF theme files
+*.Designer.cs
+*.xaml.cs
+**/*.g.cs
+**/*.g.i.cs
+**/*.xaml.cs
+packages/
+**/packages/**
+
+## Common Files
+## ============
+# NuGet Packages
+*.nupkg
+*.nupkg.metadata
+*.nupkg.sha512
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/artifacts/**
+
+# VS Code files
+.vscode/
+**/.vscode/**
+
+# Rider/IDEA files
+.idea/
+**/.idea/**
+
+# Temp files
+*.tmp
+*.temp
+*.cache
+*.log
+*.tlog
+*.errlog
+*.ilk
+*.pdb
+
+# Output files
+*.dll
+*.exe
+*.exe.config
+*.pdb
+*.exp
+*.lib
+*.xml
+*.nupkg
+*.appx
+*.bundle
+*.msi
+*.msp
+*.msm
+*.sdf
+*.opensdf
+*.vcxproj.*.user
+*.dbmdl
+
+# Test results
+TestResults/
+**/TestResults/**
+*.trx
+*.trx
+*.coverage
+*.coveragexml
+
+# Publish files
+publish/
+**/publish/**
+*.publish.xml
+*.pubxml
+*.pubxml.user
+
+# Azure Functions
+local.settings.json
+
+# Paket dependency manager
+.paket/
+paket-files/
+
+## To copy this file to your project:
+## 1. Save as ".gitignore" in your D:/practise/WpfLoginApp directory
+## 2. Then run: git add .gitignore
+## 3. Followed by: git add . (for other files)
