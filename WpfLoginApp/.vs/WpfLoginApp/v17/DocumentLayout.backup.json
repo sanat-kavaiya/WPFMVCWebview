@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Practise\\WpfLoginApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\views\\homewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\views\\homewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\views\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\views\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\views\\sitespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\views\\sitespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\views\\sitespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\views\\sitespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\wpfloginapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\wpfloginapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|d:\\practise\\wpfloginapp\\wpfloginapp\\views\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{204BBBCF-8CF9-4FCB-B2B2-C98797FFF4BB}|WpfLoginApp\\WpfLoginApp.csproj|solutionrelative:wpfloginapp\\views\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WpfLoginApp.csproj",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\WpfLoginApp.csproj",
+              "RelativeDocumentMoniker": "WpfLoginApp\\WpfLoginApp.csproj",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\WpfLoginApp.csproj",
+              "RelativeToolTip": "WpfLoginApp\\WpfLoginApp.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-23T13:33:41.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SitesPage.xaml",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\SitesPage.xaml",
+              "RelativeDocumentMoniker": "WpfLoginApp\\Views\\SitesPage.xaml",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\SitesPage.xaml",
+              "RelativeToolTip": "WpfLoginApp\\Views\\SitesPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-23T11:47:12.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SitesPage.xaml.cs",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\SitesPage.xaml.cs",
+              "RelativeDocumentMoniker": "WpfLoginApp\\Views\\SitesPage.xaml.cs",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\SitesPage.xaml.cs",
+              "RelativeToolTip": "WpfLoginApp\\Views\\SitesPage.xaml.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswA0AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T11:48:41.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeWindow.xaml",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\HomeWindow.xaml",
+              "RelativeDocumentMoniker": "WpfLoginApp\\Views\\HomeWindow.xaml",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\HomeWindow.xaml",
+              "RelativeToolTip": "WpfLoginApp\\Views\\HomeWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-23T08:46:13.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\HomeWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfLoginApp\\Views\\HomeWindow.xaml.cs",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\HomeWindow.xaml.cs",
+              "RelativeToolTip": "WpfLoginApp\\Views\\HomeWindow.xaml.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAuwFwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T11:28:58.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardPage.xaml.cs",
+              "DocumentMoniker": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\DashboardPage.xaml.cs",
+              "RelativeDocumentMoniker": "WpfLoginApp\\Views\\DashboardPage.xaml.cs",
+              "ToolTip": "D:\\Practise\\WpfLoginApp\\WpfLoginApp\\Views\\DashboardPage.xaml.cs",
+              "RelativeToolTip": "WpfLoginApp\\Views\\DashboardPage.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T09:17:18.266Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

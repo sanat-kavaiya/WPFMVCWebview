@@ -1,0 +1,442 @@
+﻿<Page x:Class="WpfLoginApp.Views.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfLoginApp.Views"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="1100.544" d:DesignWidth="883.597"
+      Title="DashboardPage"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+
+    <Page.Resources>
+        <!-- Define accent color - choose your brand color -->
+        <Color x:Key="AccentColor">#0078D4</Color>
+        <!-- Windows 11 blue -->
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+        <SolidColorBrush x:Key="AccentHoverBrush" Color="#005A9E"/>
+
+        <!-- Card style with subtle shadow -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="12" ShadowDepth="2" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Page heading style -->
+        <Style x:Key="PageHeadingStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <!-- Card title style -->
+        <Style x:Key="CardTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+        </Style>
+
+        <!-- Subtext style -->
+        <Style x:Key="SubtextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        </Style>
+
+        <!-- Stat value style - now using our accent brush -->
+        <Style x:Key="StatValueStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+        </Style>
+
+        <!-- Primary button style -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentHoverBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Secondary button style -->
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Activity item template -->
+        <DataTemplate x:Key="ActivityItemTemplate">
+            <Border Padding="12,8" 
+                    Margin="0,0,0,4"
+                    CornerRadius="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Grid.Column="0"
+                             Width="8" Height="8"
+                             Fill="{StaticResource AccentBrush}"
+                             Margin="0,0,12,0"
+                             VerticalAlignment="Center"/>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Title}"
+                                   FontWeight="Medium"
+                                   Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+                        <TextBlock Text="{Binding Time}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <!-- Sample data for design time -->
+        <x:Array x:Key="SampleActivities" Type="{x:Type system:String}">
+            <system:String>New user registered</system:String>
+            <system:String>Order #1234 completed</system:String>
+            <system:String>Payment received</system:String>
+            <system:String>Support ticket closed</system:String>
+        </x:Array>
+
+        <x:Array x:Key="SampleProjects" Type="{x:Type system:String}">
+            <system:String>Website Redesign</system:String>
+            <system:String>Mobile App Development</system:String>
+            <system:String>Database Migration</system:String>
+            <system:String>Security Audit</system:String>
+        </x:Array>
+    </Page.Resources>
+
+    <!-- Main layout with scrolling -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="24">
+        <StackPanel>
+
+            <!-- Page header with welcome message -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding CurrentUser, StringFormat='Welcome back, {0}'}"
+           Style="{StaticResource PageHeadingStyle}"/>
+                    <TextBlock Text="Here's what's happening with your account today"
+                               Style="{StaticResource SubtextStyle}"/>
+                </StackPanel>
+
+                <!-- Date display -->
+                <Border Grid.Column="1"
+                        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                        CornerRadius="6"
+                        Padding="12,8">
+                    <TextBlock Text="{Binding Source={x:Static system:DateTime.Now}, 
+                                             StringFormat='MMMM dd, yyyy'}"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+                </Border>
+            </Grid>
+
+            <!-- Stats cards row -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Stat Card 1 -->
+                <Border Grid.Column="0" 
+                        Style="{StaticResource CardStyle}"
+                        Margin="0,0,6,0">
+                    <StackPanel>
+                        <TextBlock Text="Total Revenue"
+                                   Style="{StaticResource SubtextStyle}"/>
+                        <TextBlock Text="$45,289"
+                                   Style="{StaticResource StatValueStyle}"/>
+                        <TextBlock Text="↑ 12% from last month"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                   Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Stat Card 2 -->
+                <Border Grid.Column="1" 
+                        Style="{StaticResource CardStyle}"
+                        Margin="6,0">
+                    <StackPanel>
+                        <TextBlock Text="Active Users"
+                                   Style="{StaticResource SubtextStyle}"/>
+                        <TextBlock Text="2,845"
+                                   Style="{StaticResource StatValueStyle}"/>
+                        <TextBlock Text="↑ 5.2% from yesterday"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                   Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Stat Card 3 -->
+                <Border Grid.Column="2" 
+                        Style="{StaticResource CardStyle}"
+                        Margin="6,0">
+                    <StackPanel>
+                        <TextBlock Text="New Orders"
+                                   Style="{StaticResource SubtextStyle}"/>
+                        <TextBlock Text="156"
+                                   Style="{StaticResource StatValueStyle}"/>
+                        <TextBlock Text="24 awaiting processing"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                   Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Stat Card 4 -->
+                <Border Grid.Column="3" 
+                        Style="{StaticResource CardStyle}"
+                        Margin="6,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Conversion Rate"
+                                   Style="{StaticResource SubtextStyle}"/>
+                        <TextBlock Text="23.6%"
+                                   Style="{StaticResource StatValueStyle}"/>
+                        <ProgressBar Value="23.6" 
+                                   Maximum="100"
+                                   Height="4"
+                                   Margin="0,8,0,0"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Main content area with two columns -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left column - Recent Activity -->
+                <Border Grid.Column="0"
+                        Style="{StaticResource CardStyle}"
+                        Margin="0,0,12,0" Grid.ColumnSpan="2">
+                    <StackPanel>
+                        <TextBlock Text="Recent Activity"
+                                   Style="{StaticResource CardTitleStyle}"/>
+
+                        <!-- Activity list with sample data -->
+                        <StackPanel>
+                            <Border Padding="12,8" Margin="0,0,0,4" CornerRadius="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Grid.Column="0" Width="8" Height="8" 
+                                            Fill="{StaticResource AccentBrush}" 
+                                            Margin="0,0,12,0" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="New user registered" FontWeight="Medium"/>
+                                        <TextBlock Text="5 minutes ago" FontSize="12" 
+                                                  Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="12,8" Margin="0,0,0,4" CornerRadius="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Grid.Column="0" Width="8" Height="8" 
+                                            Fill="{StaticResource AccentBrush}" 
+                                            Margin="0,0,12,0" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Order #1234 completed" FontWeight="Medium"/>
+                                        <TextBlock Text="15 minutes ago" FontSize="12" 
+                                                  Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="12,8" Margin="0,0,0,4" CornerRadius="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Grid.Column="0" Width="8" Height="8" 
+                                            Fill="{StaticResource AccentBrush}" 
+                                            Margin="0,0,12,0" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Payment received" FontWeight="Medium"/>
+                                        <TextBlock Text="1 hour ago" FontSize="12" 
+                                                  Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- View all link -->
+                        <Button Content="View All Activity"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Margin="0,16,0,0"
+                                Padding="0"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                BorderThickness="0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Right column - Quick Actions -->
+                <Border Grid.Column="1"
+                        Style="{StaticResource CardStyle}"
+                        Margin="12,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Quick Actions"
+                                   Style="{StaticResource CardTitleStyle}"/>
+
+                        <Button Content="Create New Report"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Margin="0,0,0,10"/>
+
+                        <Button Content="Export Data"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Margin="0,0,0,10"/>
+
+                        <Button Content="Manage Users"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Margin="0,0,0,10"/>
+
+                        <Button Content="Settings"
+                                Style="{StaticResource SecondaryButtonStyle}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Bottom section - Recent projects -->
+            <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Recent Projects"
+                               Style="{StaticResource CardTitleStyle}"/>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Header -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Project Name" 
+                                   FontWeight="SemiBold" Padding="8,4"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Status" 
+                                   FontWeight="SemiBold" Padding="8,4"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="Due Date" 
+                                   FontWeight="SemiBold" Padding="8,4"/>
+
+                        <!-- Row 1 -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Website Redesign" Padding="8,4"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="In Progress" Padding="8,4">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="#FFB90C"/>
+                                <!-- Orange -->
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="Mar 15, 2024" Padding="8,4"/>
+
+                        <!-- Row 2 -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Mobile App Dev" Padding="8,4"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="Completed" Padding="8,4">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="#107C10"/>
+                                <!-- Green -->
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Feb 28, 2024" Padding="8,4"/>
+
+                        <!-- Row 3 -->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Database Migration" Padding="8,4"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="Planning" Padding="8,4">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="#0078D4"/>
+                                <!-- Blue -->
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="2" Text="Apr 10, 2024" Padding="8,4"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>
