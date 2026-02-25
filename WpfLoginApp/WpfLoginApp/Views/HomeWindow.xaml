@@ -98,7 +98,10 @@
                     Style="{StaticResource SidebarButtonStyle}"
                     Click="Sites_Click"/>
 
-            <!-- Spacer pushes logout to bottom -->
+            <Button Content="🕸️ Legacy Sites" 
+                Style="{StaticResource SidebarButtonStyle}"
+        Click="LegacySites_Click"/>
+                <!-- Spacer pushes logout to bottom -->
             <StackPanel VerticalAlignment="Bottom"
                         Margin="0,0,0,20">
                 <Rectangle Style="{StaticResource DividerStyle}"/>

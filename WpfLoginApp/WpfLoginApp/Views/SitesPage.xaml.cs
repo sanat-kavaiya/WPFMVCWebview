@@ -82,6 +82,13 @@ namespace WpfLoginApp.Views
 
                         // Extract menu items
                         await ExtractMenuItems();
+
+                        // Now show the WebView and hide loading grid
+                        await Dispatcher.InvokeAsync(() =>
+                        {
+                            WebView.Visibility = Visibility.Visible;
+                            LoadingGrid.Visibility = Visibility.Collapsed;
+                        });
                     }
                 };
             }
@@ -96,44 +103,42 @@ namespace WpfLoginApp.Views
             try
             {
                 string script = @"
-            (function() {
-                var menuItems = [];
-                
-                // Find all menu items
-                var menuLinks = document.querySelectorAll('.menu-item');
-                
-                menuLinks.forEach(function(link) {
-                    var icon = link.querySelector('i');
-                    var iconClass = icon ? icon.className : 'fas fa-link';
-                    var text = link.textContent.trim();
-                    var href = link.getAttribute('href');
-                    
-                    // Determine if it's a main menu or submenu based on parent
-                    var isMainMenu = false;
-                    var parentLabel = link.closest('.sidebar-menu')?.previousElementSibling;
-                    if (parentLabel && parentLabel.classList.contains('menu-label')) {
-                        isMainMenu = parentLabel.textContent.trim() === 'MAIN';
-                    }
-                    
-                    menuItems.push({
-                        Title: text,
-                        Icon: iconClass,
-                        Url: href,
-                        IsMainMenu: isMainMenu
-                    });
-                });
-                
-                // Return the array directly - WebView2 will handle JSON serialization
-                return menuItems;
-            })();
-        ";
+                    (function() {
+                        var menuItems = [];
+                        
+                        // Find all menu items
+                        var menuLinks = document.querySelectorAll('.menu-item');
+                        
+                        menuLinks.forEach(function(link) {
+                            var icon = link.querySelector('i');
+                            var iconClass = icon ? icon.className : 'fas fa-link';
+                            var text = link.textContent.trim();
+                            var href = link.getAttribute('href');
+                            
+                            // Determine if it's a main menu or submenu based on parent
+                            var isMainMenu = false;
+                            var parentLabel = link.closest('.sidebar-menu')?.previousElementSibling;
+                            if (parentLabel && parentLabel.classList.contains('menu-label')) {
+                                isMainMenu = parentLabel.textContent.trim() === 'MAIN';
+                            }
+                            
+                            menuItems.push({
+                                Title: text,
+                                Icon: iconClass,
+                                Url: href,
+                                IsMainMenu: isMainMenu
+                            });
+                        });
+                        
+                        return menuItems;
+                    })();
+                ";
 
                 string result = await WebView.CoreWebView2.ExecuteScriptAsync(script);
 
                 if (!string.IsNullOrEmpty(result) && result != "null" && result != "[]")
                 {
-                    // The result is already a JSON string, but might have extra escaping
-                    // First, clean up the result if it has extra quotes
+                    // Clean up the result if it has extra quotes
                     string cleanResult = result.Trim('"').Replace("\\\"", "\"");
 
                     var options = new System.Text.Json.JsonSerializerOptions
@@ -155,6 +160,10 @@ namespace WpfLoginApp.Views
         {
             if (WebView?.CoreWebView2 != null)
             {
+                // Show loading grid and hide WebView before navigation
+                LoadingGrid.Visibility = Visibility.Visible;
+                WebView.Visibility = Visibility.Collapsed;
+
                 // Ensure we're navigating within the same domain
                 if (!url.StartsWith("http"))
                 {
@@ -182,16 +191,9 @@ namespace WpfLoginApp.Views
     // Menu item data class
     public class MenuItemData
     {
-        [System.Text.Json.Serialization.JsonPropertyName("Title")]
         public string Title { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("Icon")]
         public string Icon { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("Url")]
         public string Url { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("IsMainMenu")]
         public bool IsMainMenu { get; set; }
     }
 }

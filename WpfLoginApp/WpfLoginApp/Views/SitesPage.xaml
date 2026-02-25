@@ -10,6 +10,9 @@
       Title="SitesPage">
 
     <Grid>
-        <wv2:WebView2 x:Name="WebView"/>
+        <Grid Visibility="Visible" x:Name="LoadingGrid" Background="White">
+            <TextBlock Text="Loading..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+        </Grid>
+        <wv2:WebView2 x:Name="WebView" Visibility="Collapsed"/>
     </Grid>
 </Page>

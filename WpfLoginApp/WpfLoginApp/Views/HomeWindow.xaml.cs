@@ -44,7 +44,8 @@ namespace WpfLoginApp.Views
                     string content = btn.Content.ToString();
                     if (content != "📊 Dashboard" &&
                         content != "🌐 Sites" &&
-                        content != "🚪 Logout")
+                        content != "🚪 Logout" &&
+                        content != "🕸️ Legacy Sites")
                     {
                         _menuPanel.Children.RemoveAt(i);
                     }
@@ -147,6 +148,13 @@ namespace WpfLoginApp.Views
                 new LoginWindow().Show();
                 this.Close();
             }
+        }
+
+        private void LegacySites_Click(object sender, RoutedEventArgs e)
+        {
+            // Create a new SitesPage but don't subscribe to menu extraction
+            var sitesPage = new LegacySitesPage();
+            MainFrame.Navigate(sitesPage);
         }
     }
 }
